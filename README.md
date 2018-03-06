@@ -1,0 +1,2 @@
+# dotstrap
+Dotto bootstrapper
