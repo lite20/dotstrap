@@ -1,18 +1,28 @@
-#include <windows.h>
-#include <cstdlib>
-#include <iostream>
+#include "includes\dotto.h"
+#include <direct.h>
+#include <Windows.h>
 
 int main(int argc, char* argv[])
 {
-    // force only one instance of the program
-    HANDLE hMutex = OpenMutex(MUTEX_ALL_ACCESS, 0, "dottolock.0");
-    if (!hMutex) {
-        hMutex = CreateMutex(0, 0, "dottolock.0");
-        std::system("java -jar dotto.jar");
-    }
+	HANDLE hMutex = OpenMutex(MUTEX_ALL_ACCESS, 0, "dottolock.0");
+	if (!hMutex)
+	{
+		hMutex = CreateMutex(0, 0, "dottolock.0");
+		std::system("java -jar dotto.jar");
+	}
 
-    // wait before closing
-    std::getchar();
+	if (argv[1]) {
+		if (!dotto::extract(argv[1], true))
+		{
+			printf("Failed");
+		}
+		else
+		{
+			printf("Success");
+		}
+	}
 
-    return 0;
+	std::getchar();
+
+	return 0;
 }
