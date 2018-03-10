@@ -14,14 +14,8 @@ int main(int, char**)
     else // Lock already exists, unzip map(?)
     {
 
-        // Wait before closing
-        std::getchar();
-
         return 1;
     }
-
-    // wait before closing
-    std::getchar();
 
     sem_unlink("dottolock.0");
 

@@ -22,7 +22,5 @@ int main(int argc, char* argv[])
 		}
 	}
 
-	std::getchar();
-
 	return 0;
 }
